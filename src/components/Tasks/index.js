@@ -97,7 +97,42 @@ const Tasks = () => {
   const logOut = () => {
     dispatch(logout({ user: "", token: "" })); //التغيير اللي سوته: ترجع الستيت سترنق فاضي 
   };
-  return <div></div>;
+  return (
+    <div>
+      {state.sign.token ? ( /// اذا فيه توكن ريديوسر الساين
+        <>
+          <form
+            onSubmit={(e) => {
+              addTask(e); // نفّذ فنكشن ادد تاسك
+            }}
+          >
+            <input type="text" name="newTaskVal" />
+
+            <input type="submit" value="Add" />
+          </form>
+          <ul>
+            {state.tasks.map(
+              (
+                item // يعمل لوب على التاسكات
+              ) => (
+                <Task
+                  key={item._id}
+                  userItem={item}
+                  deleteTask={deleteTask}
+                  updateTask={updateTask}
+                />
+              )
+            )}
+          </ul>
+          <Link to="/">
+            <button onClick={logOut}>log out</button> {/*تنفذ لوق اوت  */}
+          </Link>
+        </>
+      ) : (
+        <Pages /> //يودينا لصفحة اللبيج
+      )}
+    </div>
+  );
 }
 
 export default Tasks
