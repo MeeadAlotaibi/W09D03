@@ -44,6 +44,8 @@ const Tasks = () => {
   };
 
   /////////////////////////// Get Tasks ////////////////////////////////////////
+
+  
   const getTasks = async () => {
     try {
       const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/`, {
@@ -116,8 +118,9 @@ const Tasks = () => {
                 item // يعمل لوب على التاسكات
               ) => (
                 <Task
+                /// نرسلها ك بروبز للكمبونننت تشايلد
                   key={item._id}
-                  userItem={item}
+                  userItem={item} 
                   deleteTask={deleteTask}
                   updateTask={updateTask}
                 />
