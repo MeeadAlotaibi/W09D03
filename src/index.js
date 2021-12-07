@@ -1,10 +1,16 @@
 import React from 'react';
-// const React=require('react')
-
 import ReactDOM from 'react-dom';
 import App from './App';
+import store from "./reducers";
+import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
+
 
 ReactDOM.render(
-<App />, 
-document.getElementById('root'))
-;
+  <Provider store={store}> {/* لازم اخذ تصريح عشان اسوي المول */}
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Provider>,
+  document.getElementById("root")
+);
