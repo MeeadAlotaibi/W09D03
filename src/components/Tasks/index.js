@@ -51,9 +51,7 @@ const Tasks = () => {
       const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/`, {
         headers: { Authorization: `Bearer ${state.sign.token}` }, // نرسل توكن للهيدرز
       });
-      // console.log(res.data);
       dispatch(userTasks({ userTask: res.data }));
-      // setTasks(res.data);
     } catch (error) {
       console.log(error);
     }
@@ -128,7 +126,7 @@ const Tasks = () => {
             )}
           </ul>
           <Link to="/">
-            <button onClick={logOut}>log out</button> {/*تنفذ لوق اوت  */}
+            <button onClick={logOut}>log out</button> {/*تنفذ فنكشن لوق اوت  */}
           </Link>
         </>
       ) : (
