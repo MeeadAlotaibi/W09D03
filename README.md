@@ -18,4 +18,6 @@
 * React js
 * Redux for state managment 
 * CSS
+---
+### UML
 ![Untitled Workspace (3)](https://github.com/MeeadAlotaibi/W09D03/blob/main/Todo-React-Redux.drawio.png)
