@@ -19,10 +19,10 @@
 * Redux for state managment 
 * CSS
 
-###UML React_Redux
+### UML React_Redux
 ![Untitled Workspace (3)](https://github.com/MeeadAlotaibi/W09D03/blob/main/Todo-React-Redux.drawio.png)
 
 ---
 
-###UML React
+### UML React
 ![Untitled Workspace (3)](https://github.com/MeeadAlotaibi/W09D03/blob/main/TODO-REACT.drawio.png)
