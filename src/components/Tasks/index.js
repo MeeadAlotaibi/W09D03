@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import Landing from "../Landing";
+import Pages from "../Pages";
 import Task from "../Task";
 import { logout } from "../../reducers/sign";
-import { userTasks } from "../../reducers/tasks";
 import axios from "axios";
+import { getTasks, postTasks, putTasks, deleteTasks } from "../../reducers/user";
 
 ///////////////////////////////////////////////////////////////////
 
@@ -13,12 +13,12 @@ const Tasks = () => {
   const dispatch = useDispatch(); // هذي اللي راح تغير ع الداتا
 
   useEffect(() => {
-    getTasks();
+    getUserTasks();
   }, []); // تنفذ مره وحده بس
 
   ///////////////////////////////////////////////////////////////////
   const state = useSelector((state) => {
-    //تروح تجيب لي الستيت من
+    //تروح تجيب لي الداتا من القلوبل الستيت من
     return {
       sign: state.sign, //روح جيب لي البيانات من رديوسر الساين
       tasks: state.tasks.userTask, //روح جيب لي البيانات من رديوسر التاسك
@@ -26,10 +26,10 @@ const Tasks = () => {
   });
 
   ///////////////////////// Add Task //////////////////////////////////////////
+
   const addTask = async (e) => {
     try {
       //   let name = e.target.newTaskVal.value;
-
       const res = await axios.post(
         `${process.env.REACT_APP_BASE_URL}/createTask`,
         { name: e.target.newTaskVal.value },
@@ -37,7 +37,7 @@ const Tasks = () => {
           headers: { Authorization: `Bearer ${state.sign.token}` }, // نرسل توكن للهيدرز
         }
       );
-      getTasks();
+      dispatch((res.data));
     } catch (error) {
       console.log(error);
     }
@@ -51,7 +51,7 @@ const Tasks = () => {
       const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/`, {
         headers: { Authorization: `Bearer ${state.sign.token}` }, // نرسل توكن للهيدرز
       });
-      dispatch(userTasks({ userTask: res.data }));
+      dispatch(({ userTask: res.data }));
     } catch (error) {
       console.log(error);
     }

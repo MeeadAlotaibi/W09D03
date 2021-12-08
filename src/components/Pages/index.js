@@ -1,11 +1,19 @@
-import React from 'react'
+import React from "react";
+import { Link } from "react-router-dom";
+
+///////////////////////////////////////////////////////////////
 
 const Pages = () => {
-    return (
-        <div>
-            
-        </div>
-    )
-}
+  return (
+    <>
+      <Link to="/Signin">
+        <button>Sign in</button>
+      </Link>
+      <Link to="/Signup">
+        <button>Sign up</button>
+      </Link>
+    </>
+  );
+};
 
-export default Pages
+export default Pages;

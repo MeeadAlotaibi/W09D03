@@ -3,11 +3,12 @@
 /////////////////////////////////////////////////////////////////////////
  import { createStore, combineReducers } from "redux"; // استدعي ستور و كومبين لانه هو اللي راح يجمع لي جميع الريديوسر كـ اوبجكت يحتوون على اوبجكتس
 import { composeWithDevTools } from "redux-devtools-extension"; // نسيت ايش عملها ؟ composeWithDevTools
-
+import  sign from "./sign"; // نسيت ايش عملها ؟ composeWithDevTools
+import tasks from "./tasks";
 // المهم
 /////////////////////////////////////////////////////////////////////////
 
-const reducers = combineReducers({ sign, tasks });  
+const reducers = combineReducers({ sign, taskuser, admins });  
 // كأنها اوبجكت تحتوي على كيز مثل هذا
 // {
 // signIn: {

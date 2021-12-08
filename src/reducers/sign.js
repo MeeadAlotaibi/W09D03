@@ -13,20 +13,31 @@ const sign = (state = initState, action) => {
   const { type, payload } = action; // الاكشن تحتوي على التايب و البيلود
 
   switch (type) {
+
+
     case "LOGIN": //  ،،حال كانت دخول
       const { role, token } = payload; // نرسل له  البيلود يحتوي على الرول و التوكن،  اللي راح تتغير
       localStorage.setItem("token", token); // خزن التوكن في اللوكال ستورج
       return { role, token }; // دستركشر لانها اصلا في الستيت ،، اوبجكت ابيه يرجعهم و يعبيهم بالستيت
-    case "LOGOUT": //
+
+    ///////////////////
+
+    case "LOGOUT": 
       localStorage.clear(); /// يطلع من اللوكال ستورج
       return payload;
 
+    ///////////////////
+
     default:
-      // في حال ما طابق ولا وحده منهم لازم يرجع الستيت
+      // عشان اذا سوا ريفريش مايطلع
+      let tokenStorage = localStorage.getItem("token");
+      let roleStorage = localStorage.getItem("role");
+      if (tokenStorage && roleStorage)
+        return { token: tokenStorage, role: roleStorage };
       return state; /// ماطابق شي ر جع لي القيم المبدئية
   }
-
-  export default sign;
+};
+export default sign;
 
   /////////////////////////////////////////////////////////////////////////
 
@@ -48,6 +59,6 @@ const sign = (state = initState, action) => {
       payload: data, // البيلود يحتوي على الداتا،، الداتا اللي هي رول و توكن
     };
   };
-};
+
 
 /////////////////////////////////////////////////////////////////////////

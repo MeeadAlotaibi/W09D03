@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { login } from "../../reducers/sign";
-import axios, { Axios } from "axios";
+import axios from "axios";
 
 const Signup = () => {
   const dispatch = useDispatch(); ///
@@ -10,8 +10,12 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const BASE_URL = process.env.REACT_APP_BASE_URL; // جبته من ملف دوت إنف
 
-
-  ///////////////////////////////////////////////////////////////
+  const state = useSelector((state) => {
+    return {
+      sign: state.sign,
+    };
+  });
+///////////////////////////////////////////////////////////////
 
   const Signup = async () => {
     try {
@@ -24,6 +28,7 @@ const Signup = () => {
         role: res.data.result.role.role, //// مافهمت هذي ؟
         token: res.data.token,
       };
+      console.log(res.data.result);
       dispatch(login(data)); // اللي فهمته انه هي اللي بتعمل التغيير وترسلها للرديوسر بس استاذ محمد يقول لا ،، مين يعرف؟ الله اللي بيعرف
     } catch (err) {
       console.log(err);
